@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100vh;
+  padding: 10px 2%;
+  background-color: #3c8bb4;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  margin: 30px 0;
+}
+
+.score {
+  background-color: #eee;
+  color: #51c4bd;
+  padding: 20px 100px;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+.score b {
+  font-weight: bold;
+}
+
+.btn-restart {
+  color: #ddfffd;
+  background-color: #51c4bd;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0 50px;
+  cursor: pointer;
+  transition-duration: .2s;
+}
+
+.btn-restart:hover {
+  background-color: #3baaa7;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: auto;
+  padding: 0 20px 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.card {
+  width: 6.69%;
+  height: 150px;
+}
+
+.flip-container {
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.flip-container:hover .flipper {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
+.flipper {
+  position: relative;
+  transition: transform .5s;
+  transform-style: preserve-3d;
+}
+
+.flipper .front,
+.flipper .back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 90px;
+  border-radius: 10px;
+}
+
+.front {
+  color: #ddfffd;
+  z-index: 2;
+  background-color: #51c4bd;
+}
+
+.back {
+  color: #51c4bd;
+  z-index: 1;
+  background-color: #eee;
+  transform: rotateY(180deg);
+}
