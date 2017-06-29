@@ -6,7 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100vh;
   padding: 10px 2%;
   background-color: #3c8bb4;
 }
@@ -27,13 +26,14 @@ header {
 }
 
 .score b {
+  display: inline-block;
   font-weight: bold;
 }
 
 .btn-restart {
   color: #ddfffd;
   background-color: #51c4bd;
-  border: none;
+  border: 2px solid #67dbd7;
   outline: none;
   border-radius: 20px;
   font-size: 30px;
@@ -44,34 +44,29 @@ header {
 }
 
 .btn-restart:hover {
+  border: 2px solid #72e5e1;
   background-color: #3baaa7;
 }
 
 main {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: auto;
-  padding: 0 20px 20px;
-}
-
-.row {
-  display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
-  margin: 20px 0;
 }
 
 .card {
-  width: 6.69%;
+  width: 7.2%;
   height: 150px;
-}
-
-.flip-container {
   -webkit-perspective: 1000;
   perspective: 1000;
+  margin: 10px 0;
 }
 
-.flip-container:hover .flipper {
+.card:hover {
+  cursor: pointer;
+}
+
+.card.flipped .flipper {
   transform: rotateY(180deg);
   cursor: pointer;
 }
@@ -97,15 +92,19 @@ main {
   border-radius: 10px;
 }
 
-.front {
+.back {
   color: #ddfffd;
   z-index: 2;
   background-color: #51c4bd;
 }
 
-.back {
+.front {
   color: #51c4bd;
   z-index: 1;
   background-color: #eee;
   transform: rotateY(180deg);
+}
+
+.hidden {
+  visibility: hidden;
 }
