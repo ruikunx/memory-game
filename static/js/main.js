@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
    * Define card behavior: flip when click or nonmatching, hide when matching, reset when restart the game
    */
   var card = {
+    //why do you need to extract this?
     content: (function() {
       var alphabet = [];
       for (var i = 0; i < 26; i++) {
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     },
 
     randomize: function() {
+      // Why using array from here?
       var alphabet = Array.from(this.content);
       alphabet.sort(function() {
         return Math.random() - Math.random();
@@ -126,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var cardElements = document.querySelectorAll('[data-type="card"]');
     Array.from(cardElements).forEach(function(element) {
+      //Addint listeners in a loop is a bad practice, use delegation here
       element.addEventListener('click', function() {
         if (processor.chosenCards.length < 2 && !this.classList.contains('flipped')) {
           card.flip(this);
