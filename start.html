@@ -7,12 +7,7 @@
   <script src="static/js/main.js"></script>
 </head>
 <body>
-  <header>
-    <div class="score">Steps: <b id="scoreNumber">0</b></div>
-    <button id="restartBtn" class="btn-restart" type="button">Restart</button>
-  </header>
-
-  <main>
+  <main id="cardBoard">
     <div class="card" data-type="card" data-content="">
       <div class="flipper">
         <div class="back">?</div>
@@ -20,6 +15,41 @@
       </div>
     </div>
   </main>
+
+  <aside>
+    <button id="restartBtn" class="btn-restart" type="button">Restart</button>
+
+    <ul class="layout-setting">
+      <li>
+        <input id="layout52" type="radio" name="cardsNumber" value="52" checked>
+        <label for="layout52">13 Cards x 4 Rows</label>
+      </li>
+      <li>
+        <input id="layout32" type="radio" name="cardsNumber" value="32">
+        <label for="layout32">8 Cards x 4 Rows</label>
+      </li>
+    </ul>
+
+    <div class="player-panel">
+      <ul class="player-setting">
+        <li>
+          <input id="onePlayer" type="radio" name="playersNumber" value="1">
+          <label for="onePlayer">One player</label>
+        </li>
+        <li>
+          <input id="twoPlayers" type="radio" name="playersNumber" value="2" checked>
+          <label for="twoPlayers">Two players</label>
+        </li>
+      </ul>
+
+      <ul id="scoreBoard" class="score-board">
+        <li data-type="scoreItem">
+          <b class="player-name" data-type="playerName">Player 1</b>
+          <div class="score">Score: <b data-type="scoreNumber">0</b></div>
+        </li>
+      </ul>
+    </div>
+  </aside>
 
 
 </body>
