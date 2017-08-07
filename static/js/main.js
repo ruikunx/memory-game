@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var playersNumber = document.querySelector('input[name="playersNumber"]:checked').getAttribute('value');
 
     return {
-      cardsNumber: cardsNumber,
-      playersNumber: playersNumber
+      cardsNumber: parseInt(cardsNumber, 10),
+      playersNumber: parseInt(playersNumber, 10)
     }
   }
 
