@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     currentPlayerIndex: 0, // Which player is playing
 
-    hiddenCardsNumber: 0 // Number of removed cards. If this number is equal to the number of total cards, the game is completed.
+    hiddenCardsNumber: 0, // Number of removed cards. If this number is equal to the number of total cards, the game is completed.
+
+    totalCardsNumber: 0  // Number of total cards.
   };
 
   /**
@@ -68,8 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
    */
   function initialRender(settings, figures) {
     figures.sort(function() {
-      return Math.random() - Math.random();  // randomize the card figures on the face since initial figures are sorted
+      return Math.random() - Math.random();  // Randomize the card figures on the face since initial figures are sorted
     });
+
+    state.hiddenCardsNumber = 0;
+    state.totalCardsNumber = settings.cardsNumber;
 
     var cardFragment = document.createDocumentFragment();
     var cardElement = document.querySelector('[data-type="card"]');
@@ -145,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         chosenCardsForThisPlayer.splice(0, 2);
 
-        if (state.hiddenCardsNumber === document.querySelectorAll('[data-type="card"]').length) {
+        if (state.hiddenCardsNumber === state.totalCardsNumber) {
           showSuccessMessage();
         }
       }, 500);
@@ -198,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#cardBoard').addEventListener('click', function(event) {
       var targetElement = event.target;
       while (targetElement !== this) {
-        if (targetElement.dataset.type === 'card') {
+        if (targetElement.dataset.type === 'card' && !targetElement.classList.contains('hidden')) {
           if (state.chosenCards[state.currentPlayerIndex].length < 2 && !targetElement.classList.contains('flipped')) {
             card.flip(targetElement);
             checkResult(targetElement);
